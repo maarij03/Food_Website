@@ -66,6 +66,8 @@ font-family: 'Roboto', sans-serif;
 /* ====================================================
     Gutter Code 
 ==================================================== */
+
+
 .ltn__no-gutter > [class*='col-'] {
   /* No padding only for child columns */
   padding-right: 0;
@@ -637,6 +639,10 @@ fieldset legend {
 
 .position-relative {
   position: relative; }
+
+
+
+
 
 /* ----------------------------------------------------
     input and button type focus outline disable
@@ -4588,7 +4594,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 
 .mini-cart-img {
   float: left;
-  width: 80px;
+  width: 100px;
   margin-right: 15px;
   position: relative; }
 
@@ -6819,8 +6825,10 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 
 .ltn__add-to-cart-modal-area .modal-product-img {
   float: left;
-  max-width: 125px;
-  margin-right: 20px; }
+  margin-left: auto;
+  margin-right: auto;
+  /* max-width: 125px;
+  margin-right: 20px; */ } 
 
 .ltn__add-to-cart-modal-area .modal-product-info {
   overflow: hidden; }

@@ -1,3 +1,12 @@
+<?php
+if (session_id() == '') {
+    session_start();
+}
+
+// <a href='cart.html' class='theme-btn-2 btn btn-effect-2'>Checkout</a>
+require 'configure.php';
+
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -11,7 +20,7 @@
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <!-- Place favicon.png in the root directory -->
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
     <!-- Font Icons css -->
@@ -21,6 +30,39 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <!-- Responsive css -->
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .stripe-button-el {
+            text-transform: uppercase !important;
+            box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3) !important;
+            border-radius: 6px !important;
+            outline: none !important;
+            border: none !important;
+            background-color: #56CCF2 !important;
+            color: #fff !important;
+            font-family: Arial, sans-serif !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            transition: all 0.3s ease-in-out !important;
+        }
+
+        .stripe-button-el:hover {
+            background-color: #8369d1 !important;
+            cursor: pointer !important;
+        }
+
+        .stripe-button-el span {
+            display: block !important;
+            position: relative !important;
+            padding: 0 19px !important;
+            height: 54px !important;
+            line-height: 54px !important;
+            text-align: center !important;
+            border: none !important;
+            outline: none !important;
+        }
+    </style>
 
 </head>
 
@@ -106,70 +148,70 @@
                                 <nav>
                                     <div class="ltn__main-menu">
                                         <ul>
-                                            <li class="menu-icon"><a href="#">Home</a>
-                                                <ul class="sub-menu menu-pages-img-show ltn__sub-menu-col-2---">
-                                                    <li>
-                                                        <a href="index.html">Home Style 01</a>
-                                                        <img src="img/home-demos/home-1.jpg" alt="#">
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-2.html">Home Style 02</a>
-                                                        <img src="img/home-demos/home-2.jpg" alt="#">
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-3.html">Home Style 03</a>
-                                                        <img src="img/home-demos/home-3.jpg" alt="#">
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-4.html">Home Style 04</a>
-                                                        <img src="img/home-demos/home-4.jpg" alt="#">
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-5.html">Home Style 05 <span class="menu-item-badge">video</span></a>
-                                                        <img src="img/home-demos/home-5.jpg" alt="#">
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-6.html">Home Style 06</a>
-                                                        <img src="img/home-demos/home-6.jpg" alt="#">
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-7.html">Home Style 07</a>
-                                                        <img src="img/home-demos/home-7.jpg" alt="#">
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-8.html">Home Style 08</a>
-                                                        <img src="img/home-demos/home-8.jpg" alt="#">
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-9.html">Home Style 09</a>
-                                                        <img src="img/home-demos/home-9.jpg" alt="#">
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-10.html">Home Style 10</a>
-                                                        <img src="img/home-demos/home-10.jpg" alt="#">
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-11.html">Home Style 11 <span class="menu-item-badge">Service</span></a>
-                                                        <img src="img/home-demos/home-11.jpg" alt="#">
-                                                    </li>
-                                                </ul>
+                                            <li class="menu-icon"><a href="index.php">Home</a>
+                                                <!-- <ul class="sub-menu menu-pages-img-show ltn__sub-menu-col-2---">
+                                                <li>
+                                                    <a href="index.html">Home Style 01</a>
+                                                    <img src="img/home-demos/home-1.jpg" alt="#">
+                                                </li>
+                                                <li>
+                                                    <a href="index-2.html">Home Style 02</a>
+                                                    <img src="img/home-demos/home-2.jpg" alt="#">
+                                                </li>
+                                                <li>
+                                                    <a href="index-3.html">Home Style 03</a>
+                                                    <img src="img/home-demos/home-3.jpg" alt="#">
+                                                </li>
+                                                <li>
+                                                    <a href="index-4.html">Home Style 04</a>
+                                                    <img src="img/home-demos/home-4.jpg" alt="#">
+                                                </li>
+                                                <li>
+                                                    <a href="index-5.html">Home Style 05 <span class="menu-item-badge">video</span></a>
+                                                    <img src="img/home-demos/home-5.jpg" alt="#">
+                                                </li>
+                                                <li>
+                                                    <a href="index-6.html">Home Style 06</a>
+                                                    <img src="img/home-demos/home-6.jpg" alt="#">
+                                                </li>
+                                                <li>
+                                                    <a href="index-7.html">Home Style 07</a>
+                                                    <img src="img/home-demos/home-7.jpg" alt="#">
+                                                </li>
+                                                <li>
+                                                    <a href="index-8.html">Home Style 08</a>
+                                                    <img src="img/home-demos/home-8.jpg" alt="#">
+                                                </li>
+                                                <li>
+                                                    <a href="index-9.html">Home Style 09</a>
+                                                    <img src="img/home-demos/home-9.jpg" alt="#">
+                                                </li>
+                                                <li>
+                                                    <a href="index-10.html">Home Style 10</a>
+                                                    <img src="img/home-demos/home-10.jpg" alt="#">
+                                                </li>
+                                                <li>
+                                                    <a href="index-11.html">Home Style 11 <span class="menu-item-badge">Service</span></a>
+                                                    <img src="img/home-demos/home-11.jpg" alt="#">
+                                                </li>
+                                            </ul> -->
                                             </li>
-                                            <li class="menu-icon"><a href="#">About</a>
-                                                <ul>
-                                                    <li><a href="about.html">About</a></li>
-                                                    <li><a href="service.html">Services</a></li>
-                                                    <li><a href="service-details.html">Service Details</a></li>
-                                                    <li><a href="portfolio.html">Gallery</a></li>
-                                                    <li><a href="portfolio-2.html">Gallery - 02</a></li>
-                                                    <li><a href="portfolio-details.html">Gallery Details</a></li>
-                                                    <li><a href="team.html">Team</a></li>
-                                                    <li><a href="team-details.html">Team Details</a></li>
-                                                    <li><a href="faq.html">FAQ</a></li>
-                                                    <li><a href="locations.html">Google Map Locations</a></li>
-                                                </ul>
+                                            <li class="menu-icon"><a href="about.php">About</a>
+                                                <!-- <ul>
+                                                <li><a href="about.html">About</a></li>
+                                                <li><a href="service.html">Services</a></li>
+                                                <li><a href="service-details.html">Service Details</a></li>
+                                                <li><a href="portfolio.html">Gallery</a></li>
+                                                <li><a href="portfolio-2.html">Gallery - 02</a></li>
+                                                <li><a href="portfolio-details.html">Gallery Details</a></li>
+                                                <li><a href="team.html">Team</a></li>
+                                                <li><a href="team-details.html">Team Details</a></li>
+                                                <li><a href="faq.html">FAQ</a></li>
+                                                <li><a href="locations.html">Google Map Locations</a></li>
+                                            </ul> -->
                                             </li>
-                                            <li class="menu-icon"><a href="#">Shop</a>
-                                                <ul>
+                                            <li><a href="shop.php">Shop</a>
+                                                <!-- <ul>
                                                     <li><a href="shop.html">Shop</a></li>
                                                     <li><a href="shop-grid.html">Shop Grid</a></li>
                                                     <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
@@ -187,7 +229,7 @@
                                                             <li><a href="register.html">Register</a></li>
                                                         </ul>
                                                     </li>
-                                                </ul>
+                                                </ul> -->
                                             </li>
                                             <li class="menu-icon"><a href="#">News</a>
                                                 <ul>
@@ -234,8 +276,18 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li class="special-link"><a href="contact.html">GET A QUOTE</a></li>
+                                            <li><a href="contact.php">Contact</a></li>
+                                            <?php
+                                            if (isset($_SESSION['name'])) { ?>
+                                                <li class="special-link"><a href="#"><?php echo $_SESSION['name'] ?></a></li>
+                                            <?php
+                                            } ?>
+                                            <?php
+                                            if (isset($_SESSION['registered']) == false) {
+                                                echo " <li class='special-link'><a href='register.php'>Register</a></li>";
+                                                echo " <li class='special-link'><a href='login.php'>Login</a></li>";
+                                            }
+                                            ?>
                                         </ul>
                                     </div>
                                 </nav>
@@ -252,7 +304,7 @@
                                 </div>
                                 <div class="header-search-1-form">
                                     <form id="#" method="get" action="#">
-                                        <input type="text" name="search" value="" placeholder="Search here..." />
+                                        <input type="text" name="search" id="search" autocomplete="off" value="" placeholder="Search here..." />
                                         <button type="submit">
                                             <span><i class="icon-search"></i></span>
                                         </button>
@@ -260,24 +312,44 @@
                                 </div>
                             </div>
                             <!-- user-menu -->
-                            <div class="ltn__drop-menu user-menu">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="icon-user"></i></a>
-                                        <ul>
-                                            <li><a href="login.html">Sign in</a></li>
-                                            <li><a href="register.html">Register</a></li>
-                                            <li><a href="account.html">My Account</a></li>
-                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+                            <?php
+                            if (isset($_SESSION['registered']) == true) {
+                                echo " <div class='ltn__drop-menu user-menu'>
+                                   <ul>
+                                       <li>
+                                           <a href='#'><i class='icon-user'></i></a>
+                                           <ul>" ?>
+
+                                <?php
+                                if (isset($_SESSION['login']) == true) {
+                                    echo "<li><a href='logout.php'>Logout</a></li>";
+                                } else {
+                                    echo "<li><a href='login.php'>Login</a></li>";
+                                }
+
+                                ?>
+                            <?php echo "
+                                               <li><a href='account.html'>My Account</a></li>
+                                               <li><a href='wishlist.html'>Wishlist</a></li>
+                                           </ul>
+                                       </li>
+                                   </ul>
+                               </div>";
+                            }
+                            ?>
                             <!-- mini-cart -->
                             <div class="mini-cart-icon">
                                 <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                                     <i class="icon-shopping-cart"></i>
-                                    <sup>2</sup>
+                                    <?php
+                                    if (isset($_SESSION['cart'])) {
+                                        $count = count($_SESSION['cart']);
+                                        echo "<sup>$count</sup>";
+                                    } else {
+                                        echo "<sup>0</sup>";
+                                    }
+                                    ?>
+
                                 </a>
                             </div>
                             <!-- mini-cart -->
@@ -303,64 +375,78 @@
         <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
             <div class="ltn__utilize-menu-inner ltn__scrollbar">
                 <div class="ltn__utilize-menu-head">
-                    <span class="ltn__utilize-menu-title">Cart</span>
+                    <span class="ltn__utilize-menu-title">My Cart</span>
                     <button class="ltn__utilize-close">×</button>
                 </div>
                 <div class="mini-cart-product-area ltn__scrollbar">
+
                     <div class="mini-cart-item clearfix">
-                        <div class="mini-cart-img">
-                            <a href="#"><img src="img/product/1.png" alt="Image"></a>
-                            <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                        </div>
-                        <div class="mini-cart-info">
-                            <h6><a href="#">Red Hot Tomato</a></h6>
-                            <span class="mini-cart-quantity">1 x $65.00</span>
-                        </div>
+                        <?php
+                        $pro_total = 0;
+                        $sub_total = 0;
+                        if (isset($_SESSION['cart'])) {
+                            $index = 1;
+                            foreach ($_SESSION['cart'] as $key => $value) {
+                                $pro_total = $value['product_price'] * $value['product_qty'];
+                                $sub_total += $value['product_price'] * $value['product_qty'];
+                                echo "
+                <form action='insertcart.php' method='post'>
+                    <div class='mini-cart-img'>
+                        <a href='#'><img src='data:image/jpg;base64," . base64_encode($value['product_img']) . "'></a> 
+                        <button type='submit' name='removepro' class='mini-cart-item-delete'><i class='icon-cancel'></i></button>
                     </div>
-                    <div class="mini-cart-item clearfix">
-                        <div class="mini-cart-img">
-                            <a href="#"><img src="img/product/2.png" alt="Image"></a>
-                            <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                        </div>
-                        <div class="mini-cart-info">
-                            <h6><a href="#">Vegetables Juices</a></h6>
-                            <span class="mini-cart-quantity">1 x $85.00</span>
-                        </div>
+                    <div class='mini-cart-info'>
+                        <h6><a href='#' >{$value['product_name']}</a></h6>
+                        <span class='mini-cart-quantity'>{$value['product_qty']} x Rs {$value['product_price']}</span>
                     </div>
-                    <div class="mini-cart-item clearfix">
-                        <div class="mini-cart-img">
-                            <a href="#"><img src="img/product/3.png" alt="Image"></a>
-                            <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                        </div>
-                        <div class="mini-cart-info">
-                            <h6><a href="#">Orange Sliced Mix</a></h6>
-                            <span class="mini-cart-quantity">1 x $92.00</span>
-                        </div>
-                    </div>
-                    <div class="mini-cart-item clearfix">
-                        <div class="mini-cart-img">
-                            <a href="#"><img src="img/product/4.png" alt="Image"></a>
-                            <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                        </div>
-                        <div class="mini-cart-info">
-                            <h6><a href="#">Orange Fresh Juice</a></h6>
-                            <span class="mini-cart-quantity">1 x $68.00</span>
-                        </div>
+                    <input type='hidden' name='delbtn2' value='{$value['product_name']}'>
+                </form> <br>
+            ";
+                                $index++;
+                            }
+                        }
+                        ?>
+
+
                     </div>
                 </div>
-                <div class="mini-cart-footer">
-                    <div class="mini-cart-sub-total">
-                        <h5>Subtotal: <span>$310.00</span></h5>
-                    </div>
-                    <div class="btn-wrapper">
-                        <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
-                        <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
-                    </div>
-                    <p>Free Shipping on All Orders Over $100!</p>
+                <?php
+
+                if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+
+                    echo "<div style='text-align: right;'>
+                <form action='insertcart.php' method='post'>
+                    <button type='submit' name='clearcart' class='theme-btn-2 btn btn-effect-2'>Clear Cart</button> 
+                </form>
+            </div>  
+            <div class='mini-cart-footer'>
+                <div class='mini-cart-sub-total'>";
+                    $count = count($_SESSION['cart']);
+                    if ($count > 0) {
+                        echo "<h5>Subtotal: <span>Rs $sub_total</span></h5>";
+                    }
+                    echo "</div>
+                <div class='btn-wrapper'>
+                    <a href='viewcart.php' class='theme-btn-1 btn btn-effect-1'>View Cart</a>
+                    " ?>
+                    <form action="submit.php" method="post">
+                        <input type="hidden" name="sub_total" value="<?php echo $sub_total ?>">
+                        <script src='https://checkout.stripe.com/checkout.js' class='stripe-button' data-key="<?php echo $Publishable_key ?>" data-amount="<?php echo $sub_total * 100 ?>" data-name="Brocolli" data-description="Order Food Now" data-image="http://localhost/food_website/php_folder/img/logo-2.png" data-currency="pkr" data-email="<?php echo $user_email ?>" data-billingAddress="true" data-zipCode="true" data-locale="auto" data-label="Checkout"
+>
+                        </script>
+                    </form>
+                <?php echo "
                 </div>
+                <p>Free Shipping on All Orders Over Rs 10000!</p>
+            </div>";
+                } else {
+                    echo "<h3>No products In cart</h3>";
+                }
+                ?>
 
             </div>
         </div>
+
         <!-- Utilize Cart Menu End -->
 
         <!-- Utilize Mobile Menu Start -->
@@ -422,7 +508,7 @@
                                 <li><a href="order-tracking.html">Order Tracking</a></li>
                                 <li><a href="account.html">My Account</a></li>
                                 <li><a href="login.html">Sign in</a></li>
-                                <li><a href="register.html">Register</a></li>
+                                <li><a href="register.php">Register</a></li>
                             </ul>
                         </li>
                         <li><a href="#">News</a>

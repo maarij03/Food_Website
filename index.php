@@ -3,6 +3,10 @@ include 'connection.php';
 require 'header.php';
 ?>
 
+<div id="search-result">
+
+</div>
+
 
 <!-- SLIDER AREA START (slider-3) -->
 <div class="ltn__slider-area ltn__slider-3  section-bg-1">
@@ -163,113 +167,42 @@ require 'header.php';
 </div>
 <!-- BANNER AREA END -->
 
-<!-- MODAL AREA START (Quick View Modal) -->
-<div class="ltn__modal-area ltn__quick-view-modal-area">
-    <div class="modal fade" id="<?php echo $row['product_id']?>" tabindex="-1">
+<!-- QUICK VIEW MODAL AREA START -->
+<div class="ltn__modal-area ltn__add-to-cart-modal-area">
+    <div class="modal" id="quickviewmodal" tabindex="-1">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" id="CloseBtn" class="close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                        <!-- <i class="fas fa-times"></i> -->
                     </button>
                 </div>
-                <div class="modal-body">
-                    <?php
-                    // $sql = "SELECT * FROM `products` where `product_id` = '" . $row['product_id'] . "'";
-                    // $execute = mysqli_query($conn, $sql);
-                    // $fetch = mysqli_fetch_assoc($execute);
-                    ?>
-                    <div class="ltn__quick-view-modal-inner">
-                        <div class="modal-product-item">
-                            <div class="row">
-                                <div class="col-lg-6 col-12">
-                                    <div class="modal-product-img">
-                                        <img src="img/product/4.png" alt="#">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="modal-product-info">
-                                        <div class="product-ratting">
-                                            <ul>
-                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                                <li><a href="#"><i class="far fa-star"></i></a></li>
-                                                <li class="review-total"> <a href="#"> ( 95 Reviews )</a></li>
-                                            </ul>
-                                        </div>
-                                        <h3><?php echo $row['product_name']; ?></h3>
-                                        <div class="product-price">
-                                            <span>$149.00</span>
-                                            <del>$165.00</del>
-                                        </div>
-                                        <div class="modal-product-meta ltn__product-details-menu-1">
-                                            <ul>
-                                                <li>
-                                                    <strong>Categories:</strong>
-                                                    <span>
-                                                        <a href="#">Parts</a>
-                                                        <a href="#">Car</a>
-                                                        <a href="#">Seat</a>
-                                                        <a href="#">Cover</a>
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="ltn__product-details-menu-2">
-                                            <ul>
-                                                <li>
-                                                    <div class="cart-plus-minus">
-                                                        <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="theme-btn-1 btn btn-effect-1" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
-                                                        <i class="fas fa-shopping-cart"></i>
-                                                        <span>ADD TO CART</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="ltn__product-details-menu-3">
-                                            <ul>
-                                                <li>
-                                                    <a href="#" class="" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                        <i class="far fa-heart"></i>
-                                                        <span>Add to Wishlist</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="" title="Compare" data-toggle="modal" data-target="#quick_view_modal">
-                                                        <i class="fas fa-exchange-alt"></i>
-                                                        <span>Compare</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <hr>
-                                        <div class="ltn__social-media">
-                                            <ul>
-                                                <li>Share:</li>
-                                                <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                                <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                                <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
-                                                <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                <div class="modal-body" id="out">
 
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
+<!-- QUICK VIEW MODAL AREA END -->
+
+<!-- MODAL AREA START (Add To Cart Modal) -->
+<!-- <div class="ltn__modal-area ltn__add-to-cart-modal-area">
+    <div class="modal" id="add_to_cart_modal" tabindex="-1">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" id="close" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="products">
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
 <!-- MODAL AREA END -->
 
 <!-- PRODUCT TAB AREA START (product-item-3) -->
@@ -295,36 +228,51 @@ require 'header.php';
                                 $fuits_query = "SELECT * FROM `products` p join `product_category` c on p.product_category = c.pto_cat_id where `product_category` = 8";
                                 $execute = mysqli_query($conn, $fuits_query);
                                 while ($row = mysqli_fetch_assoc($execute)) {
+                                    $image_data = base64_encode($row['product_img']);
                                 ?>
 
                                     <!-- ltn__product-item -->
                                     <div class="col-lg-12">
                                         <div class="ltn__product-item ltn__product-item-3 text-center">
                                             <div class="product-img">
-                                                <a href=""><img src="data:image/jpg;base64,<?php echo base64_encode($row['product_img']); ?>" style="width:100%;height:100%;"></a>
+                                                <a href="pro_details.php?proid=<?php echo $row['product_id'];?>"><img src="data:image/jpg;base64,<?php echo base64_encode($row['product_img']); ?>" style="width:100%;height:100%;"></a>
                                                 <div class="product-badge">
                                                     <ul>
                                                         <li class="sale-badge">New</li>
                                                     </ul>
                                                 </div>
                                                 <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#<?php echo $row['product_id']?>">
-                                                                <i class="far fa-eye"></i>
-                                                            </a>
+                                                    <form action="insertcart.php" method="post" enctype="multipart/form-data">
+                                                        <input type="hidden" name="product_name" value="<?php echo $row['product_name']; ?>">
+                                                        <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
+                                                        <input type="hidden" name="product_img" value="<?php echo $image_data; ?>">
+                                                        <input type="hidden" name="qtybutton" value=1>
+                                                        <ul>
+                                                            <li>
+                                                                <a href="javascript:void(0)" id="QuickViewBtn" title="Quick View" data-proid="<?php echo $row['product_id']; ?>">
+                                                                    <i class="far fa-eye"></i>
+                                                                </a>
+                                                            </li>
 
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
-                                                                <i class="fas fa-shopping-cart"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                                <i class="far fa-heart"></i></a>
-                                                        </li>
+
+                                                            <li>
+                                                                <button type="submit" title="Add to Cart" id="Addtocart" data-proid="<?php echo $row['product_id']; ?>" name="addtocart" style="outline: none;
+                                                            border: none;
+                                                            width: 54px;
+                                                            border-radius: 30px; cursor:pointer; transition: all 0.3s ease-in-out;
+                                                            font-weight:700;
+                                                        " onmouseover="this.style.backgroundColor='#80B500';" onmouseout="this.style.backgroundColor='#fff';">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                </button>
+                                                            </li>
+                                                   
+                                                    <li>
+                                                        <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                            <i class="far fa-heart"></i></a>
+                                                    </li>
+
                                                     </ul>
+                                                    </form>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -338,9 +286,9 @@ require 'header.php';
                                                         <li class="review-total"> <a href="#"> (24)</a></li>
                                                     </ul>
                                                 </div>
-                                                <h2 class="product-title"><a href="product-details.html"><?php echo $row['product_name']; ?></a></h2>
+                                                <h2 class="product-title"><a href="pro_details.php?proid=<?php echo $row['product_id'];?>"><?php echo $row['product_name']; ?></a></h2>
                                                 <div class="product-price">
-                                                    <span><?php echo $row['product_price']; ?></span>
+                                                    <span>Rs <?php echo $row['product_price']; ?></span>
                                                     <del>$46.00</del>
                                                 </div>
                                             </div>
@@ -365,35 +313,51 @@ require 'header.php';
                             <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
                                 <?php
                                 while ($row = mysqli_fetch_assoc($execute)) {
+                                    $image_data = base64_encode($row['product_img']);
                                 ?>
 
                                     <!-- ltn__product-item -->
                                     <div class="col-lg-12">
                                         <div class="ltn__product-item ltn__product-item-3 text-center">
                                             <div class="product-img">
-                                                <a href=""><img src="data:image/jpg;base64,<?php echo base64_encode($row['product_img']); ?>" style="width:100%;height:100%;"></a>
+                                                <a href="pro_details.php?proid=<?php echo $row['product_id'];?>"><img src="data:image/jpg;base64,<?php echo base64_encode($row['product_img']); ?>" style="width:100%;height:100%;"></a>
                                                 <div class="product-badge">
                                                     <ul>
                                                         <li class="sale-badge">New</li>
                                                     </ul>
                                                 </div>
                                                 <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
-                                                                <i class="far fa-eye"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
-                                                                <i class="fas fa-shopping-cart"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                                <i class="far fa-heart"></i></a>
-                                                        </li>
+                                                <form action="insertcart.php" method="post" enctype="multipart/form-data">
+                                                        <input type="hidden" name="product_name" value="<?php echo $row['product_name']; ?>">
+                                                        <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
+                                                        <input type="hidden" name="product_img" value="<?php echo $image_data; ?>">
+                                                        <input type="hidden" name="qtybutton" value=1>
+                                                        <ul>
+                                                            <li>
+                                                                <a href="javascript:void(0)" id="QuickViewBtn" title="Quick View" data-proid="<?php echo $row['product_id']; ?>">
+                                                                    <i class="far fa-eye"></i>
+                                                                </a>
+                                                            </li>
+
+
+                                                            <li>
+                                                                <button type="submit" title="Add to Cart" id="Addtocart" data-proid="<?php echo $row['product_id']; ?>" name="addtocart" style="outline: none;
+                                                            border: none;
+                                                            width: 54px;
+                                                            border-radius: 30px; cursor:pointer; transition: all 0.3s ease-in-out;
+                                                            font-weight:700;
+                                                        " onmouseover="this.style.backgroundColor='#80B500';" onmouseout="this.style.backgroundColor='#fff';">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                </button>
+                                                            </li>
+                                                   
+                                                    <li>
+                                                        <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                            <i class="far fa-heart"></i></a>
+                                                    </li>
+
                                                     </ul>
+                                                    </form>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -407,7 +371,7 @@ require 'header.php';
                                                         <li class="review-total"> <a href="#"> (24)</a></li>
                                                     </ul>
                                                 </div>
-                                                <h2 class="product-title"><a href="product-details.html"><?php echo $row['product_name']; ?></a></h2>
+                                                <h2 class="product-title"><a href="pro_details.php?proid=<?php echo $row['product_id'];?>"><?php echo $row['product_name']; ?></a></h2>
                                                 <div class="product-price">
                                                     <span><?php echo $row['product_price']; ?></span>
                                                     <del>$46.00</del>
@@ -431,35 +395,51 @@ require 'header.php';
                             <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
                                 <?php
                                 while ($row = mysqli_fetch_assoc($execute)) {
+                                    $image_data = base64_encode($row['product_img']);
                                 ?>
 
                                     <!-- ltn__product-item -->
                                     <div class="col-lg-12">
                                         <div class="ltn__product-item ltn__product-item-3 text-center">
                                             <div class="product-img">
-                                                <a href=""><img src="data:image/jpg;base64,<?php echo base64_encode($row['product_img']); ?>" style="width:100%;height:100%;"></a>
+                                                <a href="pro_details.php?proid=<?php echo $row['product_id'];?>"><img src="data:image/jpg;base64,<?php echo base64_encode($row['product_img']); ?>" style="width:100%;height:100%;"></a>
                                                 <div class="product-badge">
                                                     <ul>
                                                         <li class="sale-badge">New</li>
                                                     </ul>
                                                 </div>
                                                 <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
-                                                                <i class="far fa-eye"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
-                                                                <i class="fas fa-shopping-cart"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                                <i class="far fa-heart"></i></a>
-                                                        </li>
+                                                <form action="insertcart.php" method="post" enctype="multipart/form-data">
+                                                        <input type="hidden" name="product_name" value="<?php echo $row['product_name']; ?>">
+                                                        <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
+                                                        <input type="hidden" name="product_img" value="<?php echo $image_data; ?>">
+                                                        <input type="hidden" name="qtybutton" value=1>
+                                                        <ul>
+                                                            <li>
+                                                                <a href="javascript:void(0)" id="QuickViewBtn" title="Quick View" data-proid="<?php echo $row['product_id']; ?>">
+                                                                    <i class="far fa-eye"></i>
+                                                                </a>
+                                                            </li>
+
+
+                                                            <li>
+                                                                <button type="submit" title="Add to Cart" id="Addtocart" data-proid="<?php echo $row['product_id']; ?>" name="addtocart" style="outline: none;
+                                                            border: none;
+                                                            width: 54px;
+                                                            border-radius: 30px; cursor:pointer; transition: all 0.3s ease-in-out;
+                                                            font-weight:700;
+                                                        " onmouseover="this.style.backgroundColor='#80B500';" onmouseout="this.style.backgroundColor='#fff';">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                </button>
+                                                            </li>
+                                                   
+                                                    <li>
+                                                        <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                            <i class="far fa-heart"></i></a>
+                                                    </li>
+
                                                     </ul>
+                                                    </form>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -473,7 +453,7 @@ require 'header.php';
                                                         <li class="review-total"> <a href="#"> (24)</a></li>
                                                     </ul>
                                                 </div>
-                                                <h2 class="product-title"><a href="product-details.html"><?php echo $row['product_name']; ?></a></h2>
+                                                <h2 class="product-title"><a href="pro_details.php?proid=<?php echo $row['product_id'];?>"><?php echo $row['product_name']; ?></a></h2>
                                                 <div class="product-price">
                                                     <span><?php echo $row['product_price']; ?></span>
                                                     <del>$46.00</del>
@@ -1138,7 +1118,7 @@ require 'header.php';
     </div>
 </div>
 <!-- BLOG AREA END -->
-<?php
-require 'footer.php';
 
+<?php
+include 'footer.php';
 ?>
